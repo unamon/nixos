@@ -10,12 +10,12 @@
   home.username = "morgan";
   home.homeDirectory = "/home/morgan";
 
+  programs.hyprland.enable = true;
   programs.git = {
     enable  = true;
     userName  = "Leonardo Ammon";
     userEmail = "leonardo.a.ammon@gmail.com";
   };
-
   programs.vscode = { 
     enable = true; 
     userSettings = {
