@@ -1,19 +1,16 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+  nix.settings={
+    experimental-features = ["nix-command" "flakes"];
+#    substituters = ["https://hyprland.cachix.org"];
+#    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
 
-  # Enable flakes and the new command-line tool 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.morgan = {
     isNormalUser = true;
     description = "Morgan";
@@ -23,21 +20,24 @@
     #  thunderbird
     ];
   };
-
-  # Enable automatic login for the user.
+  #testing to see if hyprland workds here
+  programs.hyprland.enable = true;
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "morgan";
 
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim 
     wget
     curl
+    #development pkgs
+    dotnet-sdk_7
+    dotnet-runtime_7
+    inputs.poetry2nix
   ];
 
   # Bootloader.
@@ -46,11 +46,6 @@
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;

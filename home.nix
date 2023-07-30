@@ -1,45 +1,46 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nix-vscode-extensions, ... }:
+
 
 {
-
-#  imports = [
-#    ./programs
-#  ];
-   
-  # TODO please change the username & home direcotry to your own
   home.username = "morgan";
   home.homeDirectory = "/home/morgan";
-
-  programs.hyprland.enable = true;
-  programs.git = {
-    enable  = true;
-    userName  = "Leonardo Ammon";
-    userEmail = "leonardo.a.ammon@gmail.com";
-  };
-  programs.vscode = { 
-    enable = true; 
-    userSettings = {
-      "editor.fontLigatures" = true;
-    };
-  }; 
+  programs = { 
+    git = {
+        enable  = true;
+        userName  = "Leonardo Ammon";
+        userEmail = "leonardo.a.ammon@gmail.com";
+      };
+    
+    vscode = { 
+        enable = true; 
+        userSettings = {
+          "editor.fontLigatures" = true;
+          "workbench.colorTheme" = "Catppuccin Mocha";
+        };
+        extensions = with pkgs.vscode-extensions; [
+              catppuccin.catppuccin-vsc
+              ms-dotnettools.csharp
+              bbenoist.nix
+        ];
+      }; 
+      
+    gh = { 
+        enable = true;
+        enableGitCredentialHelper = true;
+      }; 
   
-  programs.gh = { 
-    enable = true;
-    enableGitCredentialHelper = true;
+  };
 
-  }; 
   home.packages = with pkgs; [ 
     discord
-
-    #command line tools
+   #command line tools
     neofetch
-
     #utils
     ripgrep
     tree
     fzf 
     btop
-    lsof
+    lsof    
   ];
 
   home.stateVersion = "23.05";
