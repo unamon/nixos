@@ -22,6 +22,11 @@
   };
   #testing to see if hyprland workds here
   programs.hyprland.enable = true;
+programs.steam = {
+  enable = true;
+  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+};
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "morgan";
 
@@ -34,10 +39,12 @@
     vim 
     wget
     curl
+    kitty
     #development pkgs
     dotnet-sdk_7
     dotnet-runtime_7
     inputs.poetry2nix
+    node2nix
   ];
 
   # Bootloader.
@@ -107,7 +114,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-
+  virtualisation.docker.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

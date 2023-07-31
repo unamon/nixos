@@ -23,15 +23,20 @@
               bbenoist.nix
         ];
       }; 
-      
+
     gh = { 
         enable = true;
         enableGitCredentialHelper = true;
       }; 
-  
+
+#    kitty = { 
+#	enable = true; 
+#    };
   };
 
   home.packages = with pkgs; [ 
+   #misc    
+    vlc
     discord
    #command line tools
     neofetch
@@ -41,6 +46,9 @@
     fzf 
     btop
     lsof    
+    kitty
+    nodejs
+    nodePackages_latest.npm
   ];
 
   home.stateVersion = "23.05";

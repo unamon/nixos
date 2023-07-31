@@ -25,6 +25,29 @@
 
   swapDevices = [ ];
 
+  # NVidia settings
+  hardware.opengl = {
+   enable = true;
+   driSupport = true;
+   driSupport32Bit = true;
+  };
+
+  services.xserver.videoDrivers = ["nvidia"];
+
+   hardware.nvidia = {
+
+    # Modesetting is needed for most Wayland compositors
+    modesetting.enable = true;
+
+    # Use the open source version of the kernel module
+    # Only available on driver 515.43.04+
+    open = false;
+
+    # Enable the nvidia settings menu
+    nvidiaSettings = true;
+
+  };
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
