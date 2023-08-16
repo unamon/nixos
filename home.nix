@@ -16,6 +16,8 @@
         userSettings = {
           "editor.fontLigatures" = true;
           "workbench.colorTheme" = "Catppuccin Mocha";
+          "editor.minimap.enabled" = false;
+
         };
         extensions = with pkgs.vscode-extensions; [
               catppuccin.catppuccin-vsc
@@ -29,15 +31,14 @@
         enableGitCredentialHelper = true;
       }; 
 
-#    kitty = { 
-#	enable = true; 
-#    };
   };
 
   home.packages = with pkgs; [ 
    #misc    
     vlc
     discord
+    blender
+    godot_4
    #command line tools
     neofetch
     #utils

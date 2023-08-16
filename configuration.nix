@@ -20,8 +20,7 @@
     #  thunderbird
     ];
   };
-  #testing to see if hyprland workds here
-  programs.hyprland.enable = true;
+#hardware.opentabletdriver.enable = true;
 programs.steam = {
   enable = true;
   remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -29,6 +28,7 @@ programs.steam = {
 };
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "morgan";
+  security.pki.certificateFiles = [ "/home/morgan/Desktop/cert/localhost.crt" ];
 
   nixpkgs.config.allowUnfree = true;
 
