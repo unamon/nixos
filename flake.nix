@@ -6,18 +6,22 @@
 
   inputs =  { 
      nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-     hyprland.url = "github:hyprwm/Hyprland";
      home-manager = {
        url = "github:nix-community/home-manager/release-23.05";
        inputs.nixpkgs.follows = "nixpkgs";
      };
+
+     #hyprland.url = "github:hyprwm/Hyprland";
+     
+     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
      poetry2nix = { 
        url = "github:nix-community/poetry2nix";
        inputs.nixpkgs.follows = "nixpkgs";
      };
+
      node2nix = {
-	url = "github:svanderburg/node2nix";
+	      url = "github:svanderburg/node2nix";
         inputs.nixpkgs.follows = "nixpkgs";
      };
    };
@@ -33,9 +37,10 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-	  home-manager.extraSpecialArgs = inputs; 
+	        home-manager.extraSpecialArgs = inputs; 
           home-manager.users.morgan = import ./home.nix;
         }
+        
       ];
       };
     };

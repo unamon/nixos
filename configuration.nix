@@ -7,8 +7,8 @@
     ];
   nix.settings={
     experimental-features = ["nix-command" "flakes"];
-#    substituters = ["https://hyprland.cachix.org"];
-#    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
   users.users.morgan = {
@@ -17,15 +17,19 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-    #  thunderbird
     ];
   };
-#hardware.opentabletdriver.enable = true;
-programs.steam = {
-  enable = true;
-  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-};
+
+  programs.hyprland = {
+    enable = true;
+    #package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "morgan";
   security.pki.certificateFiles = [ "/home/morgan/Desktop/cert/localhost.crt" ];
@@ -45,6 +49,7 @@ programs.steam = {
     dotnet-runtime_7
     inputs.poetry2nix
     node2nix
+    libgccjit
   ];
 
   # Bootloader.

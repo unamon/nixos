@@ -1,4 +1,4 @@
-{ config, pkgs, nix-vscode-extensions, ... }:
+{ config, pkgs, nix-vscode-extensions, hyprland, ... }:
 
 
 {
@@ -23,6 +23,7 @@
               catppuccin.catppuccin-vsc
               ms-dotnettools.csharp
               bbenoist.nix
+              ms-vscode.cpptools
         ];
       }; 
 
@@ -39,6 +40,7 @@
     discord
     blender
     godot_4
+    obsidian
    #command line tools
     neofetch
     #utils
