@@ -47,9 +47,10 @@
     #development pkgs
     dotnet-sdk_7
     dotnet-runtime_7
-    inputs.poetry2nix
-    node2nix
-    libgccjit
+    gcc13
+    gdb
+    python311
+    gnumake42
   ];
 
   # Bootloader.

@@ -44,7 +44,8 @@
    #command line tools
     neofetch
     #utils
-    ripgrep
+    ripgrep   
+    
     tree
     fzf 
     btop
