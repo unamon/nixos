@@ -19,12 +19,22 @@
           "editor.minimap.enabled" = false;
 
         };
+
         extensions = with pkgs.vscode-extensions; [
               catppuccin.catppuccin-vsc
-              ms-dotnettools.csharp
               bbenoist.nix
+              ms-dotnettools.csharp
               ms-vscode.cpptools
+              ms-python.python
+        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+            { 
+                name = "ms-dotnettools.csdevkit";
+                publisher ="microsoft";
+                version = "0.4.6";
+                sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
+              }
         ];
+        
       }; 
 
     gh = { 
