@@ -13,7 +13,7 @@
 
      #hyprland.url = "github:hyprwm/Hyprland";
      
-    #  nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
      poetry2nix = { 
        url = "github:nix-community/poetry2nix";
@@ -26,7 +26,7 @@
      };
    };
   
-  outputs = { self, nixpkgs, home-manager, ...}@inputs: {
+  outputs = { self, nixpkgs, home-manager, nix-vscode-extensions, ...}@inputs: {
   nixosConfigurations = { 
     "nixos" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

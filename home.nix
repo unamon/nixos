@@ -17,7 +17,6 @@
           "editor.fontLigatures" = true;
           "workbench.colorTheme" = "Catppuccin Mocha";
           "editor.minimap.enabled" = false;
-
         };
 
         extensions = with pkgs.vscode-extensions; [
@@ -26,15 +25,17 @@
               ms-dotnettools.csharp
               ms-vscode.cpptools
               ms-python.python
-        ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-            { 
-                name = "ms-dotnettools.csdevkit";
-                publisher ="microsoft";
-                version = "0.4.6";
-                sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
-              }
-        ];
-        
+              angular.ng-template
+     
+      #   ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      # {
+      #   name = "csdevkit";
+      #   publisher = "ms-dotnettools";
+      #   version = "0.3.7";
+      #   sha256 = "sha256-KqSu/6Pu+BC85Y3oiDDvEQChtQ6YdNTomaan9PBgEGo=";
+      # }
+      ]; 
+       
       }; 
 
     gh = { 
