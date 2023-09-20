@@ -26,6 +26,7 @@
               ms-vscode.cpptools
               ms-python.python
               angular.ng-template
+              ritwickdey.liveserver
      
       #   ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       # {
